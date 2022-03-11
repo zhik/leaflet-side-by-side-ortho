@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui' />
+    <title>Leaflet Side-by-side</title>
+    <script src='http://cdn.leafletjs.com/leaflet/v1.3.1/leaflet.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/digidem/leaflet-side-by-side@2.0.0/leaflet-side-by-side.min.js'></script>
+    <link href='http://cdn.leafletjs.com/leaflet/v1.3.1/leaflet.css' rel='stylesheet' />
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id='map'></div>
+
+    <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const lnglat = params.get("lnglat");
+
+    console.log(lnglat)
+
+    const map = L.map('map').setView([40.714, -73.962], 13);
+
+    const ortho_2012 = L.tileLayer('https://tileify-ags.herokuapp.com/tiles/{z}/{x}/{y}?url=https%3A%2F%2Forthos.its.ny.gov%2Farcgis%2Frest%2Fservices%2Fwms%2F2012%2FMapServer&transparent=true&layers=show%3A0', {
+        attribution: 'NYState 2012 Orthoimagery'
+    }).addTo(map);
+
+    const ortho_2020 = L.tileLayer('https://tileify-ags.herokuapp.com/tiles/{z}/{x}/{y}?url=https%3A%2F%2Forthos.its.ny.gov%2Farcgis%2Frest%2Fservices%2Fwms%2F2020%2FMapServer&transparent=true&layers=show%3A0', {
+        attribution: 'NYState 2012 Orthoimagery'
+    }).addTo(map);
+
+
+    L.control.sideBySide(ortho_2012, ortho_2020).addTo(map);
+    </script>
+</body>
+</html>
