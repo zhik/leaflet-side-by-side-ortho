@@ -34,11 +34,11 @@
     const map = L.map('map').setView(latlng, 13);
 
     const ortho_2012 = L.tileLayer('https://tileify-ags.herokuapp.com/tiles/{z}/{x}/{y}?url=https%3A%2F%2Forthos.its.ny.gov%2Farcgis%2Frest%2Fservices%2Fwms%2F2012%2FMapServer&transparent=true&layers=show%3A0', {
-        attribution: 'NYState 2012 Orthoimagery'
+        attribution: 'New York Statewide Digital Orthoimagery Program (NYSDOP) 2012'
     }).addTo(map);
 
     const ortho_2020 = L.tileLayer('https://tileify-ags.herokuapp.com/tiles/{z}/{x}/{y}?url=https%3A%2F%2Forthos.its.ny.gov%2Farcgis%2Frest%2Fservices%2Fwms%2F2020%2FMapServer&transparent=true&layers=show%3A0', {
-        attribution: 'NYState 2012 Orthoimagery'
+        attribution: 'NYSDOP 2020'
     }).addTo(map);
 
 
