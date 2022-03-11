@@ -27,11 +27,17 @@
     <script>
     const params = new URLSearchParams(window.location.search);
 
-    const latlng = params.get("lnglat").split(' ').reverse();
+    const lnglat_param = params.get("lnglat")
+
+
+    let latlng = [40.71996, -74.00205] //default
+    if(lnglat_param){
+        latlng = lnglat_param.split(' ').reverse();
+    }
 
     console.log(latlng)
 
-    const map = L.map('map').setView(latlng, 13);
+    const map = L.map('map').setView(latlng, 17);
 
     const ortho_2012 = L.tileLayer('https://tileify-ags.herokuapp.com/tiles/{z}/{x}/{y}?url=https%3A%2F%2Forthos.its.ny.gov%2Farcgis%2Frest%2Fservices%2Fwms%2F2012%2FMapServer&transparent=true&layers=show%3A0', {
         attribution: 'New York Statewide Digital Orthoimagery Program (NYSDOP) 2012'
